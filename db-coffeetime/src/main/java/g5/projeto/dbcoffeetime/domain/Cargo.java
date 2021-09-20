@@ -18,5 +18,6 @@ public class Cargo implements Serializable {
     private Long id;
     @Column (name = "DESCRICAO", nullable = false, length = 20)
     private String descricao;
+    
 
 }
