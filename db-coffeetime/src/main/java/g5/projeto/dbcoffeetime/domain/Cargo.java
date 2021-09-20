@@ -19,5 +19,4 @@ public class Cargo implements Serializable {
     @Column (name = "DESCRICAO", nullable = false, length = 20)
     private String descricao;
     
-
 }
