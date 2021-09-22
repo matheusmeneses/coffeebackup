@@ -1,19 +1,19 @@
 package g5.projeto.dbcoffeetime.config;
 
-
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;
 
-@Setter
+
 @Getter
+@Setter
+
 @Configuration
-@ConfigurationProperties(prefix =  "aplication")
-public class ApplicationPropertier {
+@ConfigurationProperties(prefix = "application")
+public class ApplicationProperties {
 
     private String enderecoRemetente;
-    private  String nomeRemetente;
-
+    private String nomeRemetente;
 
 }

@@ -2,6 +2,9 @@ package g5.projeto.dbcoffeetime.service;
 
 import g5.projeto.dbcoffeetime.domain.Usuario;
 import g5.projeto.dbcoffeetime.repositorio.UsuarioRepositorio;
+import g5.projeto.dbcoffeetime.service.dto.EmailDTO;
+import g5.projeto.dbcoffeetime.service.dto.UsuarioDTO;
+import g5.projeto.dbcoffeetime.service.mapper.UsuarioMapper;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -11,37 +14,50 @@ import java.util.List;
 @Transactional
 public class UsuarioService {
 
-    public UsuarioService(UsuarioRepositorio usuarioRepositorio){
-        this.usuarioRepositorio = usuarioRepositorio;
-    }
-
     private final UsuarioRepositorio usuarioRepositorio;
+    private final UsuarioMapper usuarioMapper;
 
-    public Usuario buscar(Long id) {
-        return usuarioRepositorio.findById(id).orElse(null);
+    private final EmailServico emailServico;
+
+    public UsuarioService(UsuarioMapper usuarioMapper, UsuarioRepositorio usuarioRepositorio, EmailServico emailServico){
+        this.usuarioMapper = usuarioMapper;
+        this.usuarioRepositorio = usuarioRepositorio;
+        this.emailServico = emailServico;
     }
 
-    public List<Usuario> buscarTodos() {
-        return usuarioRepositorio.findAll();
+    public UsuarioDTO buscar(Long id) {
+        Usuario usuario = usuarioRepositorio.findById(id).orElse(null);
+        return usuarioMapper.toDto(usuario);
     }
 
-    public Usuario salvar(Usuario usuario) {
-        return usuarioRepositorio.save(usuario);
+    public List<UsuarioDTO> buscarTodos() {
+        List<Usuario> usuarios = usuarioRepositorio.findAll();
+        return usuarioMapper.toDto(usuarios);
     }
 
-    public Usuario editar(Usuario usuario) {
-        return usuarioRepositorio.save(usuario);
+    public UsuarioDTO salvar(UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
+        EmailDTO emailDTO = new EmailDTO();
+        emailDTO.setDestinatario("mhateus1995@gmail.com");
+        emailDTO.setAssunto("Email teste");
+        emailDTO.setCorpo("teste");
+        emailServico.enviarEmail(emailDTO);
+        return usuarioMapper.toDto(usuarioSalvo);
+    }
+
+
+    public UsuarioDTO editar (UsuarioDTO usuarioDTO) {
+        Usuario usuario = usuarioMapper.toEntity(usuarioDTO);
+        Usuario usuarioSalvo = usuarioRepositorio.save(usuario);
+        return usuarioMapper.toDto(usuarioSalvo);
     }
 
     public void deletar(Long id) {
          usuarioRepositorio.deleteById(id);
     }
 
-    public String buscarFoto (Long idUsuario){
-
-      Usuario usuario =  usuarioRepositorio.findById(idUsuario).get();
-      return usuario.getFoto();
+    public UsuarioMapper getUsuarioMapper() {
+        return usuarioMapper;
     }
-
-
 }

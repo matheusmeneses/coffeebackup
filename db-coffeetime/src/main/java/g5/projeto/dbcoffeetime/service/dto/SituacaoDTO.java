@@ -9,9 +9,11 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class SituacaoDTO {
 
-    @NotNull
     private Long id;
 
     @NotNull
     private String descricao;
+
 }
+
+
