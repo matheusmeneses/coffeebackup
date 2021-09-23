@@ -35,7 +35,7 @@ public class UsuarioRecurso {
 
     @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseEntity<UsuarioDTO> cadastrar(@RequestBody UsuarioDTO usuarioDTO) throws URISyntaxException {
-       UsuarioDTO usuarioSalvo = usuarioService.salvar(usuarioDTO);
+        UsuarioDTO usuarioSalvo = usuarioService.salvar(usuarioDTO);
         return ResponseEntity.created(new URI("/api/usuarios/"+usuarioSalvo.getId())).build();
     }
 

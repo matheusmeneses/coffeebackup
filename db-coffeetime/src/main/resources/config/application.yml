@@ -11,16 +11,16 @@ spring:
     change-log: classpath:/config/liquibase/master.xml
   mail:
     host: smtp.gmail.com
-    port: 465
-    username: mhateus1995@gmail.com
-    password: "226643302"
+    port: 587
+    username: grupo5coffee@gmail.com
+    password: "grupo5senha"
     properties:
       mail:
         stmp:
           ssl:
             enabled: true
           socketFactory:
-            port: 465
+            port: 587
             fallback: false
             class: javax.net.ssl.SSLSocketFactory
           auth: true
