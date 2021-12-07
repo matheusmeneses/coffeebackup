@@ -33,7 +33,7 @@ A equipe ficou responsável tanto pelo backend quanto pelo frontend.
 ### Inicialização Serviços do Backend
 
 <code>cd backend </code> </br>
-<code>./mvn spring-boot:run </code>
+<code>./mvnw spring-boot:run </code>
 
 ### Inicialização Frontend
 
