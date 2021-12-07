@@ -1,6 +1,7 @@
 # CoffeeTime
 ### Sistema de gerenciamento de Evento
 Projeto de desenvolvimento de um sistema de gerenciamento de eventos, realizado na 1ª Turma de Formação em Brasília da Basis.
+Para visualizar a exibição do projeto funcionando clique [aqui](https://www.youtube.com/) 
 
 Nesse projeto foi feita a criação de 4 CRUDS:
 
