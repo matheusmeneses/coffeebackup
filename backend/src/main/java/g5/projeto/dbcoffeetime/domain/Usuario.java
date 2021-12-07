@@ -1,13 +1,9 @@
 package g5.projeto.dbcoffeetime.domain;
-
 import lombok.Getter;
 import lombok.Setter;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 
 
 @Entity
@@ -22,7 +18,7 @@ public class Usuario  implements Serializable {
     private Long id;
 
     @Column(name = "NOME")
-    private String patrocinador;
+    private String nome;
 
     @Column(name = "CPF")
     private String cpf;
@@ -33,7 +29,7 @@ public class Usuario  implements Serializable {
     @Column(name = "DATANASCIMENTO")
     private LocalDate dataDeNascimento;
 
-    @Column(name = "ST_ATIVO")
+    @Column(name = "STATUS")
     private Boolean status;
 
     @Column(name = "TELEFONE")
